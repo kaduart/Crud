@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+	<title>CRUD - VUE JS</title>
+</head>
+
+<body>
+
+	<div id="app">
+
+		<nav>
+			<div class="nav-wrapper blue darken-1">
+				<a href="#" class="brand-logo center">Cadastro de Produtos Hepta</a>
+			</div>
+		</nav>
+		<br>
+		<div class="col s12 m8 offset-m2 l6 offset-l3">
+			<div class="card-panel grey lighten-5 z-depth-1">
+				<div class="row valign-wrapper">
+					<div class="col s2">
+						<!-- notice the "circle" class -->
+					</div>
+					<div class="col s10">
+						<span class="black-text">
+
+							<div class="container">
+
+								<h2>{{produto.nome}}</h2>
+
+								<label>Nome</label> <input type="text" v-model="produto.nome" placeholder="Nome">
+								<label>Fabricante</label>
+								<input type="text" v-model="produto.fabricante" placeholder="Fabricante">
+								<label>Quantidade</label>
+								<input type="number" v-model="produto.quantidade" placeholder="Quantidade">
+								<label>Valor</label>
+								<input type="text" v-model="produto.valor" placeholder="Valor">
+								<br>
+								<button class="waves-effect waves-light btn-small green" @click="salvarProduto">
+									Salvar<i class="material-icons left">save</i>
+								</button>
+
+								<button class="waves-effect waves-light btn-small orange" @click="atualizarItem">
+									Confirmar Edição<i class="material-icons left">done_all</i>
+								</button>
+
+								<button class="waves-effect waves-red btn-small red" @click="limparCampos();">
+									Limpar<i class="material-icons left">clear_all</i>
+								</button>
+								<br>
+								<br>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table>
+
+			<thead>
+
+				<tr class="bg-info">
+					<th>ID</th>
+					<th>NOME</th>
+					<th>FABRICANTE</th>
+					<th>QUANTIDADE</th>
+					<th>VALOR</th>
+					<th style="text-align: center">OPÇÕES</th>
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				<tr v-for="obj in listaProdutos">
+
+					<td>{{obj.id}}</td>
+					<th>{{obj.nome}}</th>
+					<td>{{obj.fabricante}}</td>
+					<td>{{obj.quantidade}}</td>
+					<td>{{obj.valor}}</td>
+
+					<td>
+						<button class="waves-effect btn-small blue darken-1" @click="editarItem(obj.id)">
+							<i class="material-icons">create</i>
+						</button>
+						<button class="waves-effect btn-small red darken-1" @click="excluirItem(obj.id)">
+							<i class="material-icons">delete_sweep</i>
+						</button>
+					</td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+	</div>
+
+	<script src="resources/js/axios.min.js"></script>
+	<script src="resources/js/vue.js"></script>
+	<script src="resources/js/main.js"></script>
+
+</body>
+
+</html>
